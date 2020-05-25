@@ -66,7 +66,7 @@ def install(name):
             reqs_data = {
                 'roles': data['dependencies']
             }
-            
+
             # write data in install yaml file
             with open(path, 'w') as yamlfile:
                 yaml.dump(reqs_data, yamlfile, default_flow_style=False)

@@ -1,3 +1,5 @@
 .venv
 local_roles
 **/.pyc
+meta
+python_apm.egg-info
