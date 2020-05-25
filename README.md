@@ -2,7 +2,7 @@
 
 ### Allows you to set dependencies from a file meta/main.yml
 
-![alt text](https://github.com/WeslyG/apm/blob/master/etc/screen.jpg?raw=true)
+![alt text](https://github.com/WeslyG/apm/blob/master/etc/screen.png?raw=true)
 
 
 ### Why?
