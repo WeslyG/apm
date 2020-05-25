@@ -49,10 +49,16 @@ apm update
 
 ### Config
 
-temp_dir = /tmp/
-temp_file = temp.yml
+temp_dir = /tmp
+#temp_file = temp.yml
+#deps_type = roles
 
-roles_folder = local_roles
+roles_folder = ./local_roles
 use_local_folder = True
 
 galaxy_path = ansible-galaxy
+no_delete = False
+
+# galaxy params
+force = True
+ignore_errors = False
