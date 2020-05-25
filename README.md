@@ -47,3 +47,12 @@ apm update
 
 
 
+### Config
+
+temp_dir = /tmp/
+temp_file = temp.yml
+
+roles_folder = local_roles
+use_local_folder = True
+
+galaxy_path = ansible-galaxy
