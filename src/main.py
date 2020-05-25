@@ -7,7 +7,7 @@ import os
 import yaml
 import uuid
 
-import src.config
+#import src.config
 
 # Config
 temp_dir = '/tmp'
