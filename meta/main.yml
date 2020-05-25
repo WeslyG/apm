@@ -1,7 +1,0 @@
-# dependencies: []
-
-dependencies:
-- name: nginx_role
-  src: https://github.com/bennojoy/nginx
-  version: 99
-- name: geerlingguy.java
