@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # coding=utf-8
-#pyyaml
 
 import click
 import os
 import yaml
 import uuid
 
+# TODO: add config
 #import src.config
 
 # Config
@@ -31,12 +31,12 @@ def install(name):
         '✓ Ansible-galaxy bin found', fg='green'))
 
     # check meta/main.yml exist
-    if not os.path.exists('meta/main.yml'):
+    if not os.path.exists('./meta/main.yml'):
         click.echo(click.style(
             '✘ file meta/main.yml not found', fg='red'), err=True)
         exit(1)
     # read data from meta/main.yml
-    with open("meta/main.yml", 'r') as stream:
+    with open("./meta/main.yml", 'r') as stream:
         try:
             data = yaml.safe_load(stream)
             if data is None:

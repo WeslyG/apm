@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='python-apm',
-    version='1.0.1',
+    version='1.0.2',
     author="Wesly Allan",
     license='MIT',
     author_email="weslyg22@gmail.com",
@@ -24,6 +24,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        apm=src.main:cli
+        apm=apm.main:cli
     ''',
 )
