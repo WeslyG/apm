@@ -11,7 +11,7 @@ import uuid
 
 # Config
 temp_dir = '/tmp'
-roles_folder = './local_roles'
+roles_folder = './remote_roles'
 location = os.getcwd()
 
 @click.group()
@@ -39,19 +39,45 @@ def install(name):
     # read data from meta/main.yml
     with open("%s/meta/main.yml" % location, 'r') as stream:
         try:
+            skip_deps = False
+            skip_opt_deps = False
             data = yaml.safe_load(stream)
             if data is None:
                 click.echo(click.style(
-                    '✘ File meta/main.yml is empty', fg='red'), err=True)
-                exit(1)
-            if not 'dependencies' in data:
-                click.echo(click.style(
-                    '✘ Dependencies list not found in meta/main.yml', fg='red'), err=True)
-                exit(1)
-            if 'dependencies' in data and len(data['dependencies']) == 0:
-                click.echo(click.style(
-                    '? Dependencies list is empty\n\nI have nothing to do ....', fg='yellow'))
+                    '? File meta/main.yml is empty\nSkipping install deps.', fg='yellow'))
                 exit(0)
+
+            if not 'dependencies' in data or len(data['dependencies']) == 0:
+                click.echo(click.style(
+                    '? Dependencies list is empty. Skipping ...', fg='yellow'))
+                skip_deps = True
+
+            if not 'optional_dependencies' in data or len(data['optional_dependencies']) == 0:
+                click.echo(click.style(
+                    '? Optional dependencies list is empty. Skipping ...', fg='yellow'))
+                skip_opt_deps = True
+
+            if skip_deps and skip_opt_deps:
+                click.echo(click.style(
+                    '? No deps for install...', fg='yellow'))
+                exit(0)
+
+            if skip_deps:
+                reqs_data = {
+                    'roles': data['optional_dependencies']
+                }
+
+            if skip_opt_deps:
+                reqs_data = {
+                    'roles': data['dependencies']
+                }
+
+            if not skip_opt_deps and not skip_deps:
+                roles = data['optional_dependencies'] + data['dependencies']
+                reqs_data = {
+                    'roles': roles
+                }
+
             click.echo(click.style(
                 '✓ File meta/main.yml is valid', fg='green'))
 
@@ -59,14 +85,6 @@ def install(name):
             uuid_var = str(uuid.uuid4())
             path = "%s/ansible-%s.yml" % (temp_dir, uuid_var)
 
-            # validation
-            # for i in data['dependencies']:
-            #     click.echo(i)
-
-            # generate data for write in yml
-            reqs_data = {
-                'roles': data['dependencies']
-            }
 
             # write data in install yaml file
             with open(path, 'w') as yamlfile:

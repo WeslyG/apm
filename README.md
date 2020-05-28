@@ -5,6 +5,13 @@
 ![alt text](https://github.com/WeslyG/apm/blob/master/etc/screen.png?raw=true)
 
 
+### TODO:
+
+Надо конфигурацию написать, пока все захардкожено
+Работает с
+- dependencies
+- optional_dependencies
+
 ### Why?
 
 Ansible-galaxy предлагает использовать meta/main.yml для описания зависимостей, однако не позволяет
