@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='python-apm',
-    version='1.0.4',
+    version='1.0.5',
     author="Wesly Allan",
     license='MIT',
     author_email="weslyg22@gmail.com",
