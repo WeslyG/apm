@@ -52,7 +52,7 @@ def install(name):
                     '? Dependencies list is empty. Skipping ...', fg='yellow'))
                 skip_deps = True
 
-            if not 'optional_dependencies' in data or len(data['galaxy_info']['optional_dependencies']) == 0:
+            if not 'optional_dependencies' in data['galaxy_info'] or len(data['galaxy_info']['optional_dependencies']) == 0:
                 click.echo(click.style(
                     '? Optional dependencies list is empty. Skipping ...', fg='yellow'))
                 skip_opt_deps = True
@@ -64,7 +64,7 @@ def install(name):
 
             if skip_deps:
                 reqs_data = {
-                    'roles': data['optional_dependencies']
+                    'roles': data['galaxy_info']['optional_dependencies']
                 }
 
             if skip_opt_deps:
