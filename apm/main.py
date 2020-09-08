@@ -73,7 +73,8 @@ def install(name):
                 }
 
             if not skip_opt_deps and not skip_deps:
-                roles = data['optional_dependencies'] + data['dependencies']
+                roles = data['galaxy_info']['optional_dependencies'] + \
+                    data['dependencies']
                 reqs_data = {
                     'roles': roles
                 }
