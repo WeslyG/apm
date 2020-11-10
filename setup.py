@@ -1,8 +1,8 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 setup(
     name='python-apm',
-    version='1.0.7',
+    version='1.0.8',
     author="Wesly Allan",
     license='MIT',
     author_email="weslyg22@gmail.com",
